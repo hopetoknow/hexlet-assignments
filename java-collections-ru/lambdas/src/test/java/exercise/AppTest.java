@@ -25,6 +25,7 @@ public class AppTest {
                 {"*", "*", "*", "*", "*", "*", "*", "*"},
                 {"*", "*", "*", "*", "*", "*", "*", "*"},
         };
+
         String[][] actualEnlargedImage = App.enlargeArrayImage(image);
         assertThat(actualEnlargedImage).isEqualTo(expectedEnlargedImage);
     }

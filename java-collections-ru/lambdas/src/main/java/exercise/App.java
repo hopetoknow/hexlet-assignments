@@ -10,10 +10,10 @@ public class App {
 
     public static String[][] enlargeArrayImage(String[][] image) {
         return Arrays.stream(image)
-                .flatMap(line -> Stream.of(line, line)
-                        .map(element -> Stream.of(element)
-                                .flatMap(symbol -> Stream.of(symbol, symbol))
-                                .toArray(String[]::new)))
+                .map(line -> Stream.of(line)
+                        .flatMap(item -> Stream.of(item, item))
+                        .toArray(String[]::new))
+                .flatMap(item -> Stream.of(item, item))
                 .toArray(String[][]::new);
     }
 }
