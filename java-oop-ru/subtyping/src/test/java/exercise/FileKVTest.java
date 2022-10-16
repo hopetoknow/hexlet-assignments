@@ -1,22 +1,17 @@
 package exercise;
 
-import java.util.HashMap;
-import org.junit.jupiter.api.BeforeEach;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.Map;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static exercise.Utils.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
-// BEGIN
-
-// END
-
 
 class FileKVTest {
 
@@ -32,12 +27,19 @@ class FileKVTest {
     // BEGIN
     @Test
     public void fileKVTest() {
-        String pathAsString = filepath.toString();
-        KeyValueStorage storage = new FileKV(pathAsString, Map.of("key", "10"));
-        String storageAsString = serialize(storage.toMap());
-        writeFile(pathAsString, storageAsString);
-        String content = readFile(pathAsString);
-        assertThat(storage.toMap()).isEqualTo(unserialize(content));
+        KeyValueStorage storage = new FileKV(filepath.toString(), Map.of("key", "value"));
+        assertThat(storage.get("keykey", "default")).isEqualTo("default");
+        assertThat(storage.get("key", "default")).isEqualTo("value");
+
+        storage.set("key42", "value42");
+        storage.set("key", "new value");
+        assertThat(storage.get("key42", "default")).isEqualTo("value42");
+        assertThat(storage.get("key", "default")).isEqualTo("new value");
+
+        storage.unset("key");
+        assertThat(storage.get("key", "default")).isEqualTo("default");
+
+        assertThat(storage.toMap()).isEqualTo(Map.of("key42", "value42"));
     }
     // END
 }

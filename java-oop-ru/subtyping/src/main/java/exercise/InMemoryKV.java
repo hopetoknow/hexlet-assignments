@@ -6,7 +6,7 @@ import java.util.HashMap;
 // BEGIN
 public class InMemoryKV implements KeyValueStorage {
 
-    Map<String, String> dictionary;
+    private Map<String, String> dictionary;
 
     public InMemoryKV(Map<String, String> dictionary) {
         this.dictionary = new HashMap<>(dictionary);
