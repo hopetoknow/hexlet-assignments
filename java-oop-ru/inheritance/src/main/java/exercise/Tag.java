@@ -6,22 +6,22 @@ import java.util.Map;
 // BEGIN
 public class Tag {
 
-    String tagName;
-    Map<String, String> tagAttributes;
+    private String name;
+    private Map<String, String> attributes;
 
-    public Tag(String tagName, Map<String, String> tagAttributes) {
-        this.tagName = tagName;
-        this.tagAttributes = tagAttributes;
+    public Tag(String name, Map<String, String> attributes) {
+        this.name = name;
+        this.attributes = attributes;
     }
 
-    public String getTagName() {
-        return tagName;
+    public String getName() {
+        return name;
     }
 
     public String attributesToString() {
-        return tagAttributes.keySet().stream()
+        return attributes.keySet().stream()
                 .map(key -> {
-                    String value = tagAttributes.get(key);
+                    String value = attributes.get(key);
                     return String.format(" %s=\"%s\"", key, value);
                 })
                 .collect(Collectors.joining(""));

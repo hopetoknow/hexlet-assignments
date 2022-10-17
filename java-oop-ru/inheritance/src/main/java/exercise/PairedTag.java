@@ -9,28 +9,25 @@ import java.util.stream.Collectors;
 // BEGIN
 public class PairedTag extends Tag {
 
-    private String tagBody;
+    private String body;
     private List<Tag> children;
 
-    public PairedTag(String tagName, Map<String, String> tagAttributes, String tagBody, List<Tag> children) {
-        super(tagName, tagAttributes);
-        this.tagBody = tagBody;
+    public PairedTag(String name, Map<String, String> attributes, String body, List<Tag> children) {
+        super(name, attributes);
+        this.body = body;
         this.children = Objects.isNull(children) ? new ArrayList<>() : children;
     }
 
     public String childrenToString() {
         return children.stream()
-                .map(tag -> {
-                    SingleTag singleTag = (SingleTag) tag;
-                    return singleTag.toString();
-                })
+                .map(Object::toString)
                 .collect(Collectors.joining(""));
     }
 
     @Override
     public String toString() {
-        return String.format("<%s%s>%s%s</%s>", getTagName(), attributesToString(), childrenToString(),
-                tagBody, getTagName());
+        return String.format("<%s%s>%s%s</%s>", getName(), attributesToString(), childrenToString(),
+                body, getName());
     }
 }
 // END

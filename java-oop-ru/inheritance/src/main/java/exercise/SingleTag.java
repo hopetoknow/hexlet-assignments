@@ -5,13 +5,13 @@ import java.util.Map;
 // BEGIN
 public class SingleTag extends Tag {
 
-    public SingleTag(String tagName, Map<String, String> tagAttributes) {
-        super(tagName, tagAttributes);
+    public SingleTag(String name, Map<String, String> attributes) {
+        super(name, attributes);
     }
 
     @Override
     public String toString() {
-        return String.format("<%s%s>", getTagName(), attributesToString());
+        return String.format("<%s%s>", getName(), attributesToString());
     }
 }
 // END
