@@ -9,9 +9,6 @@ import java.util.List;
 // BEGIN
 public class TcpConnection implements Connection {
 
-    private static final String CONNECTED = "connected";
-    private static final String DISCONNECTED = "disconnected";
-
     private final List<String> datalist = new ArrayList<>();
     private Connection connection;
     private String address;
