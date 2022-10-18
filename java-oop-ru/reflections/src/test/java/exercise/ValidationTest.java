@@ -28,6 +28,25 @@ class ValidationTest {
     }
 
     // BEGIN
-    
+    @Test
+    public void testAdvancedValidate() {
+        Address address = new Address("US", "Texas", null, "7", "2");
+        Map<String, List<String>> actualNotValidFields = Validator.advancedValidate(address);
+        Map<String, List<String>> expectedNotValidFields = Map.of
+                ("country", List.of("length less than 3"),
+                "street", List.of("can not be null"));
+        assertThat(actualNotValidFields).isEqualTo(expectedNotValidFields);
+
+        Address address2 = new Address("USA", "Texas", "Freedom", "20", null);
+        Map<String, List<String>> actualNotValidFields2 = Validator.advancedValidate(address2);
+        Map<String, List<String>> expectedNotValidFields2 = Map.of();
+        assertThat(actualNotValidFields2).isEqualTo(expectedNotValidFields2);
+
+        Address address3 = new Address(null,"Texas", "Freedom", "20", null);
+        Map<String, List<String>> actualNotValidFields3 = Validator.advancedValidate(address2);
+        Map<String, List<String>> expectedNotValidFields3 = Map.of
+                ("country", List.of("length less than 3", "can not be null"));
+        assertThat(actualNotValidFields2).isEqualTo(expectedNotValidFields2);
+    }
     // END
 }
