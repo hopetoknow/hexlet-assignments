@@ -1,11 +1,9 @@
 package exercise;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Value;
 
 // BEGIN
-@AllArgsConstructor
-@Getter
+@Value
 // END
 class User {
 
@@ -13,14 +11,4 @@ class User {
     String firstName;
     String lastName;
     int age;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
