@@ -42,15 +42,6 @@ public class UsersServlet extends HttpServlet {
         // END
     }
 
-//    public static void main(String[] args) {
-//        try {
-//            List list = getUsers();
-//            list.forEach(System.out::println);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
     private void showUsers(HttpServletRequest request,
                           HttpServletResponse response)
                 throws IOException {
@@ -64,44 +55,39 @@ public class UsersServlet extends HttpServlet {
                     <head>
                         <meta charset="UTF-8">
                         <title>Example application | Users</title>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+                            rel="stylesheet"
+                            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+                            crossorigin="anonymous">
                     </head>
                     <body>
-                    <table>
-                        <tr>
-                            <th>id</th>
-                            <th>fullName</th>
-                        </tr>
-                        <tr>
-                            <td>
+                        <table>
+                            <tr>
+                                <th>id</th>
+                                <th>fullName</th>
+                            </tr>
                 """);
 
         for (Map<String, String> user : users) {
-            String fullName = user.get("firstName") + " " + user.get("lastName");
             String id = user.get("id");
-            html.append(id).append("</td>");
-            html.append("""
-                                <td>
-                                    <a href="/users/
-                    """);
-            html.append(id).append("\">").append(fullName).append("</a>");
-            html.append("""
-                                </td>
-                            </tr>
-                    """);
+            String fullName = user.get("firstName") + " " + user.get("lastName");
 
-
+            html.append("<tr>");
+            html.append("<td>").append(id).append("</td>");
+            html.append("<td><a href=\"/users/").append(id).append("\">").append(fullName).append("</a>")
+                    .append("</td>");
+            html.append("</tr>");
         }
 
         html.append("""
-                    </table>
+                        </table>
                     </body>
                 </html>
                 """);
 
         response.setContentType("text/html;charset=UTF-8");
-
         PrintWriter out = response.getWriter();
-        out.println(html.toString());
+        out.println(html);
         // END
     }
 
@@ -112,7 +98,6 @@ public class UsersServlet extends HttpServlet {
 
         // BEGIN
         List<Map<String, String>> users = getUsers();
-        StringBuilder html = new StringBuilder();
         Map<String, String> user = users
                 .stream()
                 .filter(item -> item.get("id").equals(id))
@@ -124,6 +109,7 @@ public class UsersServlet extends HttpServlet {
             return;
         }
 
+        StringBuilder html = new StringBuilder();
         String firstName = user.get("firstName");
         String lastName = user.get("lastName");
         String email = user.get("email");
@@ -134,43 +120,35 @@ public class UsersServlet extends HttpServlet {
                     <head>
                         <meta charset="UTF-8">
                         <title>Example application | User</title>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+                            rel="stylesheet"
+                            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+                            crossorigin="anonymous">
                     </head>
                     <body>
-                    <table>
-                        <tr>
-                            <th>id</th>
-                            <th>firstName</th>
-                            <th>lastName</th>
-                            <th>email</th>
-                        </tr>
-                        <tr>
-                            <td>
-                """);
+                        <table>
+                            <tr>
+                                <th>id</th>
+                                <th>firstName</th>
+                                <th>lastName</th>
+                                <th>email</th>
+                            </tr>
+                            <tr>""");
 
-        html.append(id).append("</td>");
+        html.append("<td>").append(id).append("</td>");
+        html.append("<td>").append(firstName).append("</td>");
+        html.append("<td>").append(lastName).append("</td>");
+        html.append("<td>").append(email).append("</td>");
         html.append("""
-                            <td>
-                """);
-        html.append(firstName).append("</td");
-        html.append("""
-                            <td>
-                """);
-        html.append(lastName).append("</td");
-        html.append("""
-                            <td>
-                """);
-        html.append(email).append("</td");
-        html.append("""
-                        </tr>
-                    </table>
+                            </tr>
+                        </table>
                     </body>
                 </html>
                 """);
 
         response.setContentType("text/html;charset=UTF-8");
-
         PrintWriter out = response.getWriter();
-        out.println(html.toString());
+        out.println(html);
         // END
     }
 }
