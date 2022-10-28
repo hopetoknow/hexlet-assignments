@@ -19,16 +19,20 @@
             <c:if test="${!error.isEmpty()}">
                 <h3><c:out value="${requestScope.error}"/></h3>
             </c:if>
-            <form action="/users/edit?id=${user.get("id")}" method="post"" method="post">
+            <form action='/users/edit?id=${user.get("id")}' method="post">
                 <div class="mb-3">
-                    <label>First name:</label>
+                    <label>First name</label>
                     <input class="form-control" type="text" name="firstName" value='${user.get("firstName")}'>
-                    <label>Last name:</label>
-                    <input class="form-control" type="text" name="lastName" value='${user.get("lastName")}'>
-                    <label>Email:</label>
-                    <input class="form-control" type="text" name="email" value='${user.get("email")}'>
                 </div>
-                <button class="btn btn-primary" type="submit">Edit</button>
+                <div class="mb-3">
+                    <label>Last name</label>
+                    <input class="form-control" type="text" name="lastName" value='${user.get("lastName")}'>
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input class="form-control" type="email" name="email" value='${user.get("email")}'>
+                </div>
+                <button class="btn btn-primary" type="submit">Confirm</button>
             </form>
             <!-- END -->
         </div>

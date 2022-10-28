@@ -141,6 +141,7 @@ public class UsersServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         Map<String, String> user = new HashMap<>() {{
+            put("id", getNextId());
             put("firstName", firstName);
             put("lastName", lastName);
             put("email", email);
@@ -155,7 +156,6 @@ public class UsersServlet extends HttpServlet {
             return;
         }
 
-        user.put("id", getNextId());
         users.add(user);
         response.sendRedirect("/users");
         // END
@@ -198,6 +198,7 @@ public class UsersServlet extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
+
         if (firstName.isEmpty() || lastName.isEmpty()) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit.jsp");
             request.setAttribute("user", user);
