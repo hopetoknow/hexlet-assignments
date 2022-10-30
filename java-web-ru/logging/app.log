@@ -1,32 +1,42 @@
-Oct 29, 2022 9:51:07 PM org.apache.coyote.AbstractProtocol init
+Oct 29, 2022 9:54:22 PM org.apache.coyote.AbstractProtocol init
 INFO: Initializing ProtocolHandler ["http-nio-auto-1"]
-Oct 29, 2022 9:51:07 PM org.apache.tomcat.util.net.NioSelectorPool getSharedSelector
+Oct 29, 2022 9:54:22 PM org.apache.tomcat.util.net.NioSelectorPool getSharedSelector
 INFO: Using a shared selector for servlet write/read
-Oct 29, 2022 9:51:07 PM org.apache.catalina.core.StandardService startInternal
+Oct 29, 2022 9:54:23 PM org.apache.catalina.core.StandardService startInternal
 INFO: Starting service [Tomcat]
-Oct 29, 2022 9:51:07 PM org.apache.catalina.core.StandardEngine startInternal
+Oct 29, 2022 9:54:23 PM org.apache.catalina.core.StandardEngine startInternal
 INFO: Starting Servlet engine: [Apache Tomcat/8.5.69]
-Oct 29, 2022 9:51:08 PM org.apache.coyote.AbstractProtocol start
-INFO: Starting ProtocolHandler ["http-nio-auto-1-39001"]
-Oct 29, 2022 9:51:11 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:23 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-auto-1-38667"]
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: lavern.keeling@gmail.com tried to log in
-Oct 29, 2022 9:51:11 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: shoshana.haley@hotmail.com tried to log in
-Oct 29, 2022 9:51:11 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: suzann.barrows@hotmail.com tried to log in
-Oct 29, 2022 9:51:12 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: lavern.keeling@gmail.com tried to log in
-Oct 29, 2022 9:51:12 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: lavern.keeling@gmail.com tried to log in
-Oct 29, 2022 9:51:12 PM exercise.servlet.SessionServlet login
+Oct 29, 2022 9:54:28 PM exercise.servlet.SessionServlet login
 INFO: lavern.keeling@gmail.com tried to log in
-Oct 29, 2022 9:51:12 PM org.apache.coyote.AbstractProtocol pause
-INFO: Pausing ProtocolHandler ["http-nio-auto-1-39001"]
-Oct 29, 2022 9:51:12 PM org.apache.catalina.core.StandardService stopInternal
+Oct 29, 2022 9:54:29 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-nio-auto-1-38667"]
+Oct 29, 2022 9:54:29 PM org.apache.catalina.core.StandardService stopInternal
 INFO: Stopping service [Tomcat]
-Oct 29, 2022 9:51:12 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
+Oct 29, 2022 9:54:29 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
 WARNING: When running on Java 9 or later you need to add "--add-opens=java.base/java.io=null" to the JVM command line arguments to enable ObjectStream cache memory leak protection. Alternatively, you can suppress this warning by disabling ObjectStream class cache memory leak protection.
-Oct 29, 2022 9:51:12 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
+Oct 29, 2022 9:54:29 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
 WARNING: When running on Java 9 or later you need to add "--add-opens=java.rmi/sun.rmi.transport=null" to the JVM command line arguments to enable RMI Target memory leak detection. Alternatively, you can suppress this warning by disabling RMI Target memory leak detection.
-Oct 29, 2022 9:51:12 PM org.apache.coyote.AbstractProtocol stop
-INFO: Stopping ProtocolHandler ["http-nio-auto-1-39001"]
+Oct 29, 2022 9:54:29 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-nio-auto-1-38667"]
+Oct 29, 2022 9:55:29 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-5000"]
+Oct 29, 2022 9:55:29 PM org.apache.tomcat.util.net.NioSelectorPool getSharedSelector
+INFO: Using a shared selector for servlet write/read
+Oct 29, 2022 9:55:29 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Oct 29, 2022 9:55:29 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/8.5.69]
+Oct 29, 2022 9:55:29 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-5000"]
