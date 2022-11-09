@@ -64,13 +64,20 @@ public class ArticlesServlet extends HttpServlet {
         // BEGIN
         List<Map<String, String>> articles = new ArrayList<>();
         String page = request.getParameter("page");
+
         if (page == null) {
             page = "1";
         }
-        String query = "SELECT id, title FROM articles ORDER BY id LIMIT 10 OFFSET ?";
+
+        int articlesPerPage = 10;
+        int offset = (Integer.parseInt(page) - 1) * articlesPerPage;
+
+        String query = "SELECT id, title FROM articles ORDER BY id LIMIT ? OFFSET ?";
+
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, Integer.parseInt(page) * 10 - 10);
+            statement.setInt(1, articlesPerPage);
+            statement.setInt(2, offset);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -102,7 +109,7 @@ public class ArticlesServlet extends HttpServlet {
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, Integer.parseInt(id));
+            statement.setString(1, id);
             ResultSet rs = statement.executeQuery();
 
             if (!rs.isBeforeFirst()) {
@@ -115,7 +122,8 @@ public class ArticlesServlet extends HttpServlet {
                 article.put("body", rs.getString("body"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
         }
         request.setAttribute("article", article);
         // END

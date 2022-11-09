@@ -9,7 +9,7 @@
   <table class="table">
     <thead>
       <th>ID</th>
-      <th>Название</th>
+      <th>Title</th>
     </thead>
     <tbody>
       <tr th:each="article : ${articles}" th:object="${article}">
@@ -23,7 +23,7 @@
   <nav th:fragment="navbar">
     <ul class="pagination justify-content-center">
       <li class="page-item">
-        <a class="page-link" th:href="@{/articles(page=${page} - 1)}">Prev</a>
+        <a class="page-link" th:href="@{/articles(page=(${page} < 2) ? 1 : (${page} - 1))}">Prev</a>
       </li>
       <li class="page-item">
         <a class="page-link" th:href="@{/articles(page=${page} + 1)}">Next</a>
