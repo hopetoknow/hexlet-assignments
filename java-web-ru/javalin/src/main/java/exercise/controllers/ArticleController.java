@@ -66,11 +66,12 @@ public final class ArticleController {
     public static Handler editArticle = ctx -> {
         // BEGIN
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
-        List<Category> categories = new QCategory().findList();
 
         Article article = new QArticle()
                 .id.equalTo(id)
                 .findOne();
+
+        List<Category> categories = new QCategory().findList();
 
         ctx.attribute("article", article);
         ctx.attribute("categories", categories);
@@ -80,10 +81,10 @@ public final class ArticleController {
 
     public static Handler updateArticle = ctx -> {
         // BEGIN
+        long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
         String title = ctx.formParam("title");
         String body = ctx.formParam("body");
-        String categoryId = ctx.formParam("categoryId");
-        long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
+        long categoryId = ctx.formParamAsClass("categoryId", Long.class).getOrDefault(null);
 
         new QArticle()
             .id.equalTo(id)
