@@ -83,6 +83,7 @@ public final class UserController {
         User user = new User(firstName, lastName, email, password);
         user.save();
 
+        ctx.sessionAttribute("flash", "User was successfully created");
         ctx.redirect("/users");
         // END
     };
