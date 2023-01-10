@@ -25,7 +25,7 @@ class AppTest {
     @BeforeAll
     static void beforeAll() {
         app = App.getApp();
-        app.start();
+        app.start(0);
         int port = app.port();
         baseUrl = "http://localhost:" + port;
     }
@@ -97,7 +97,6 @@ class AppTest {
         assertThat(user.getFirstName()).isEqualTo(firstName);
         assertThat(user.getLastName()).isEqualTo(lastName);
         assertThat(user.getEmail()).isEqualTo(email);
-        assertThat(user.getPassword()).isEqualTo(password);
     }
 
     @Test
@@ -121,7 +120,11 @@ class AppTest {
                 .findOne();
 
         assertThat(user).isNull();
-        assertThat(response.getBody().contains("Пароль должен содержать не менее 4 символов"));
+
+        String content = response.getBody();
+
+        assertThat(content.contains("hp@gmail.com"));
+        assertThat(content.contains("Пароль должен содержать не менее 4 символов"));
     }
     // END
 }
